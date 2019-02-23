@@ -1,24 +1,16 @@
 lines = int(input())
-allcombined = []
 for x in range(1, lines+1):
-  try:
     message = input()
     actualmessage = message
-    message = message.split(" ")
-    symbol = message[1]
-    numberOfPrints = int(message[0])
+    message = message.replace(" ", "")
+    message = list(message)
+    lenOfMessage = len(message)
+    symbol = ((message[(lenOfMessage-1):]))[0]
+    numberOfPrints = int(actualmessage.replace(symbol, ""))
     emptyList = []
+    answer = ""
     for x in range(1, numberOfPrints+1):
-      emptyList.append(symbol)
-    emptyList = str(emptyList)
-    emptyList = emptyList.replace("[", "")
-    emptyList = emptyList.replace("'", "")
-    emptyList = emptyList.replace(",", "")
-    emptyList = emptyList.replace(" ", "")
-    emptyList = emptyList.replace("]", "")
-    allcombined.append(emptyList)
-  except:
-    pass
-    
-for x in allcombined:
-  print(x)
+        emptyList.append(symbol)
+    for x in emptyList:
+        answer+=x
+    print(answer)
